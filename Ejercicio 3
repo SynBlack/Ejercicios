@@ -1,0 +1,45 @@
+package Ejercicios;
+
+import utilidades.Entrada;
+
+/**
+ * @author Emanuel Martínez Lonardi
+ */
+
+public class Ejercicio3 {
+
+    public static void main(String[] args) {
+
+        /*
+        * Programa que lea un número positivo y, seguidamente, empiece a pedir números (positivos y negativos)
+        * hasta que su suma coincida o supere el primer número introducido. Luego mostrará por pantalla la suma
+        * de los números introducidos (excepto el primero) y la cantidad de números introducidos (sin contar el primero).
+        * Debe asegurarse el programa que el primer número introducido sea positivo.
+         */
+        
+        // Para empezar declaramos cuatro variables como números enteros e inicializamos contador y suma.
+        int num, operador, contador = 0, suma = 0;
+
+        do {
+            System.out.print("Introduzca el número positivo inicial: ");
+            num = Entrada.entero();
+            if (num > 0) {
+                do {
+                    System.out.print("Introduzca el valor del operador: ");
+                    operador = Entrada.entero();
+
+                    // Hace la suma indicada y lo almacena en la variable "suma".
+                    suma = suma + operador;
+
+                    // Cada vez que se ejecute el bucle, sumará 1 al contador, que luego nos indicará los números introducidos.
+                    contador = contador + 1;
+
+                } while (suma <= num);
+            } else {
+                System.out.println("ERROR: el número introducido es negativo, inténtelo de nuevo.");
+            }
+        } while (num < 0);
+
+        System.out.print("La suma de los números introducidos es " + suma + " y la cantidad de números introducidos es " + contador + "\n");
+    }
+}
