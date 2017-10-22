@@ -1,0 +1,48 @@
+package Ejercicios;
+
+import utilidades.Entrada;
+
+/**
+ * @author Emanuel Martínez Lonardi
+ */
+
+public class Ejercicio4 {
+
+    public static void main(String[] args) {
+
+        /*
+        * Programa que pida un número positivo mayor que cero y un carácter.
+        * Que luego dibuje un cuadrado de lado el número y de relleno el carácter.
+        * Debe validar que el número que se introduce sea positivo mayor que cero.
+         */
+        
+        // Empezamos declarando las variables.
+        int num, fila, columna;
+        char caracter;
+
+        do {
+            System.out.print("Introduzca el número positivo: ");
+            num = Entrada.entero();
+            if (num > 0) {
+                System.out.print("Introduzca el carácter de relleno: ");
+                caracter = Entrada.caracter();
+                
+                // Crea filas hasta que el número de filas sea menor o igual a num.
+                for (fila = 1; fila <= num; fila = fila + 1) {
+                    
+                    // Crea columnas hasta que columna sea menor o igual que num.
+                    for (columna = 1; columna <= num; columna = columna + 1) {
+                        
+                        // Rellena las columnas y las filas con el carácter introducido.
+                        System.out.print(caracter + " ");
+                    }
+                    
+                    // Esto creará un salto de línea cuando llegue al final de cada fila.
+                    System.out.println("");
+                }
+            } else {
+                System.out.println("El número introducido no es positivo mayor que cero, vuelva a intentarlo.");
+            }
+        } while (num < 0);
+    }
+}
