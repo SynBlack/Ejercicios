@@ -1,0 +1,38 @@
+package Ejercicios;
+
+import utilidades.Entrada;
+
+/**
+ * @author Emanuel Martínez Lonardi
+ */
+
+public class Ejercicio2 {
+
+    public static void main(String[] args) {
+        /* Programa que dado un número positivo, lo desplace una posición a la derecha.
+        * Coger la última cifra de la derecha y ponerla a la izquierda.
+        * El programa debe asegurarse que se introduce un número positivo.
+        */
+
+        int num, cociente, resto;
+
+        do {
+            System.out.print("Introduzca un número positivo: ");
+            num = Entrada.entero();
+            if (num > 0) {
+
+                // Almacena el resto en la variable correspondiente.
+                resto = num % 10;
+                
+                // Almacena el cociente en la variable correspondiente.
+                cociente = num / 10;
+
+                // Nos muestra por pantalla primero el resto y luego concatena el cociente.
+                System.out.print("El número es el siguiente: " + resto + cociente + "\n");
+                
+            } else {
+                System.out.println("El número introducido es negativo, no se realizará el cálculo.");
+            }
+        } while (num < 0);
+    }
+}
