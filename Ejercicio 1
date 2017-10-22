@@ -1,0 +1,158 @@
+package Ejercicios;
+
+import java.text.DecimalFormat; // Importamos el DecimalFormat que usaremos para el resultado final del ejercicio.
+import utilidades.Entrada;
+
+/**
+ * @author Emanuel Martínez Lonardi
+ */
+
+public class Ejercicio1 {
+
+    /*
+    * Realiza un programa que lea por teclado las notas de los diferentes instrumentos de calificación
+    * de la modalidad semipresencial para una evaluación y, a continuación, calcule y muestre por pantalla
+    * la nota final de dicha evaluación.
+    */
+    
+    public static void main(String[] args) {
+
+        // Declaramos las variables como float.
+        float participacion, cuestiOnline, tareaOnline, tareaPresen, examenPresen, totalNota;
+
+        System.out.println("----------------------------------------------------\n");
+
+        /* 
+        * Debes validar que las entradas de datos para cada instrumento estén comprendidas entre 0 y 10 ambos incluidos.
+        */
+        
+        do {
+            System.out.print("Introduzca la nota de la participación: ");
+            participacion = Entrada.real();
+
+            if ((participacion >= 0) && (participacion <= 10)) {
+
+                participacion = (participacion / 10);
+                System.out.println("La nota de participación es: " + participacion + "\n");
+
+            } else {
+
+                System.out.println("El valor introducido no es aceptado, vuelve a intentarlo.\n");
+
+            }
+
+        } while ((participacion < 0) || (participacion > 10));
+
+        System.out.println("---------------------------------------------------\n");
+
+        do {
+            System.out.print("Introduzca la nota de los cuestionarios online: ");
+            cuestiOnline = Entrada.real();
+
+            if ((cuestiOnline >= 0) && (cuestiOnline <= 10)) {
+
+                cuestiOnline = ((cuestiOnline * 5) / 100);
+                System.out.println("La nota de los cuestionarios online es: " + cuestiOnline + "\n");
+
+            } else {
+
+                System.out.println("El valor introducido no es aceptado, vuelve a intentarlo.\n");
+
+            }
+
+        } while ((cuestiOnline < 0) || (cuestiOnline > 10));
+
+        System.out.println("----------------------------------------------------\n");
+
+        do {
+            System.out.print("Introduzca la nota de la tarea online: ");
+            tareaOnline = Entrada.real();
+
+            if ((tareaOnline >= 0) && (tareaOnline <= 10)) {
+                
+                // Comprueba que el número, a parte de estar entre 0 y 10, sea menor que 5.
+                if ((tareaOnline < 5)) { 
+                    
+                    // Si es menor que 5, le asigna a tareaOnline el valor 4.
+                    tareaOnline = 4;
+                    System.out.println("La nota es menor que 5, por lo que la nota de la tarea online será un 4.");
+                    
+                    // Y una vez asignado ese valor a tareaOnline, se le realizaría el cálculo del 25%.
+                    tareaOnline = ((tareaOnline * 25) / 100);
+                    System.out.println("La nota de la tarea online es: " + tareaOnline + "\n");
+                    
+                } else {
+                    tareaOnline = ((tareaOnline * 25) / 100);
+                    System.out.println("La nota de la tarea online es: " + tareaOnline + "\n");
+                }
+            } else {
+                System.out.println("El valor introducido no es aceptado, vuelve a intentarlo.\n");
+            }
+
+        } while ((tareaOnline < 0) || (tareaOnline > 10));
+
+        System.out.println("----------------------------------------------------\n");
+
+        do {
+            System.out.print("Introduzca la nota de la tarea presencial: ");
+            tareaPresen = Entrada.real();
+
+            if ((tareaPresen >= 0) && (tareaPresen <= 10)) {
+                if ((tareaPresen < 5)) {
+                    tareaPresen = 4;
+                    System.out.println("La nota es menor que 5, por lo que la nota de la tarea presencial será un 4.");
+                    tareaPresen = ((tareaPresen * 25) / 100);
+                    System.out.println("La nota de la tarea presencial es: " + tareaPresen + "\n");
+                } else {
+                    tareaPresen = ((tareaPresen * 25) / 100);
+                    System.out.println("La nota de la tarea presencial es: " + tareaPresen + "\n");
+                }
+            } else {
+                System.out.println("El valor introducido no es aceptado, vuelve a intentarlo.\n");
+            }
+
+        } while ((tareaPresen < 0) || (tareaPresen > 10));
+
+        System.out.println("----------------------------------------------------\n");
+
+        do {
+            System.out.print("Introduzca la nota del examen presencial: ");
+            examenPresen = Entrada.real();
+
+            if ((examenPresen >= 0) && (examenPresen <= 10)) {
+                if ((examenPresen < 5)) {
+                    examenPresen = 4;
+                    System.out.println("La nota es menor que 5, por lo que la nota del examen presencial será un 4.");
+                    examenPresen = ((examenPresen * 35) / 100);
+                    System.out.println("La nota del examen presencial es: " + examenPresen + "\n");
+                } else {
+                    examenPresen = ((examenPresen * 35) / 100);
+                    System.out.println("La nota del examen presencial es: " + examenPresen + "\n");
+                }
+            } else {
+                System.out.println("El valor introducido no es aceptado, vuelve a intentarlo.\n");
+            }
+
+        } while ((examenPresen < 0) || (examenPresen > 10));
+
+        System.out.println("----------------------------------------------------\n");
+
+        totalNota = (participacion + cuestiOnline + tareaOnline + tareaPresen + examenPresen);
+        
+        // Asignamos a x el valor de totalNota.
+        float x = totalNota;
+        
+        // Utilizamos DecimalFormat para controlar y que muestre sólo 2 decimales como resultado.
+        DecimalFormat df = new DecimalFormat("0.00");
+        
+        // Esto nos mostrará en pantalla nuestra nota sólo con 2 decimales
+        System.out.println("La nota total del alumno es un " + df.format(x));
+        
+        if (x >= 5) { // Utilizamos "x" como condición pues anteriormente le habíamos asignado a la variable float "x" el valor de "totalNota"
+            System.out.println("El alumno está aprobado.");
+        } else {
+            System.out.println("El alumno está suspenso.");
+        }
+    }
+
+}
